@@ -13,3 +13,8 @@ if(result.registered){
 registry.registerRenderer({},renderer);registry.lookupRenderer({type:'interactive-project/quiz',protocolVersion:'1.0.0',activitySchemaVersion:'0.0.1',host:'react'});
 // @ts-expect-error Unknown hosts are not a valid renderer request.
 registry.lookupRenderer({type:'interactive-project/quiz',protocolVersion:'1.0.0',activitySchemaVersion:'0.0.1',host:'native'});
+
+import {resolveEngine} from '@interactive-project/registry/resolution';
+import {createPluginLoader} from '@interactive-project/registry/loader';
+const resolved=resolveEngine(registry,{type:'interactive-project/quiz',protocolVersion:'1.0.0',activityVersion:{min:'0.0.1',maxExclusive:'1.0.0'},requiredCapabilities:['offline']});if(resolved.resolved){const id:string=resolved.registration.manifest.id;void id;}
+const loader=createPluginLoader([{id:'fixtures/plugin',protocolVersions:['1.0.0'],dependencies:[],load:async signal=>{const aborted:boolean=signal.aborted;return{aborted};}}]);void loader;

@@ -40,5 +40,5 @@ export function createRegistry(options){
   return r?{found:true,registration:r}:{found:false,code:'registry.rendererMissing'};
  }
  function dispose(){disposed=true;records.clear();engines.clear();renderers.clear();}
- return Object.freeze({registerEngine:(m,p)=>register('engine',m,p),registerRenderer:(m,p)=>register('renderer',m,p),lookupEngine,lookupRenderer,dispose});
+ return Object.freeze({registerEngine:(m,p)=>register('engine',m,p),registerRenderer:(m,p)=>register('renderer',m,p),lookupEngine,lookupRenderer,listEngines:()=>Object.freeze([...records.values()].filter(r=>r.kind==='engine')),listRenderers:()=>Object.freeze([...records.values()].filter(r=>r.kind==='renderer')),dispose});
 }
