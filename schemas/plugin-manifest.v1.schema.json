@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/interactive-project/registry/blob/main/schemas/plugin-manifest.v1.schema.json",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/engine"
+    },
+    {
+      "$ref": "#/$defs/renderer"
+    }
+  ],
+  "$defs": {
+    "engine": {
+      "type": "object",
+      "properties": {
+        "manifestVersion": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-z0-9][a-z0-9.-]*/[a-z0-9][a-z0-9._-]*$"
+        },
+        "pluginVersion": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        },
+        "type": {
+          "enum": [
+            "interactive-project/quiz",
+            "interactive-project/flashcards",
+            "interactive-project/code",
+            "interactive-project/simulation",
+            "interactive-project/diagram",
+            "interactive-project/whiteboard"
+          ]
+        },
+        "protocolVersions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "const": "1.0.0"
+          }
+        },
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "items": {
+            "$ref": "https://github.com/interactive-project/protocol/blob/main/schemas/generation-catalog.v1.schema.json#/$defs/entry"
+          }
+        }
+      },
+      "required": [
+        "manifestVersion",
+        "id",
+        "pluginVersion",
+        "type",
+        "protocolVersions",
+        "entries"
+      ],
+      "additionalProperties": false
+    },
+    "renderer": {
+      "type": "object",
+      "properties": {
+        "manifestVersion": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[a-z0-9][a-z0-9.-]*/[a-z0-9][a-z0-9._-]*$"
+        },
+        "pluginVersion": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        },
+        "type": {
+          "enum": [
+            "interactive-project/quiz",
+            "interactive-project/flashcards",
+            "interactive-project/code",
+            "interactive-project/simulation",
+            "interactive-project/diagram",
+            "interactive-project/whiteboard"
+          ]
+        },
+        "protocolVersions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "const": "1.0.0"
+          }
+        },
+        "host": {
+          "enum": [
+            "react",
+            "vue",
+            "svelte",
+            "dom"
+          ]
+        },
+        "activitySchemaVersions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+          }
+        },
+        "rendererContractVersion": {
+          "const": "1.0.0"
+        }
+      },
+      "required": [
+        "manifestVersion",
+        "id",
+        "pluginVersion",
+        "type",
+        "protocolVersions",
+        "host",
+        "activitySchemaVersions",
+        "rendererContractVersion"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

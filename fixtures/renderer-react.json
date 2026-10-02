@@ -1,0 +1,14 @@
+{
+  "manifestVersion": "1.0.0",
+  "id": "fixtures/react-quiz-renderer",
+  "pluginVersion": "0.0.1",
+  "type": "interactive-project/quiz",
+  "protocolVersions": [
+    "1.0.0"
+  ],
+  "host": "react",
+  "activitySchemaVersions": [
+    "0.0.1"
+  ],
+  "rendererContractVersion": "1.0.0"
+}
