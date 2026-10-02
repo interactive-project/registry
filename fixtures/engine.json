@@ -1,0 +1,44 @@
+{
+  "manifestVersion": "1.0.0",
+  "id": "fixtures/quiz-engine",
+  "pluginVersion": "0.0.1",
+  "type": "interactive-project/quiz",
+  "protocolVersions": [
+    "1.0.0"
+  ],
+  "entries": [
+    {
+      "type": "interactive-project/quiz",
+      "activitySchemaVersion": "0.0.1",
+      "schemaId": "urn:fixtures:quiz-config:0.0.1",
+      "capabilities": {
+        "interactive": {
+          "supported": true
+        },
+        "evaluable": {
+          "supported": true
+        },
+        "collaborative": {
+          "supported": false
+        },
+        "offline": {
+          "supported": true
+        },
+        "deterministic": {
+          "supported": true
+        },
+        "resumable": {
+          "supported": false
+        },
+        "aiGeneratable": {
+          "supported": false
+        }
+      },
+      "requiredCapabilities": [
+        "interactive",
+        "evaluable"
+      ],
+      "requiredPermissions": []
+    }
+  ]
+}
