@@ -11,7 +11,9 @@
     "schemas",
     "docs",
     "fixtures",
-    "README.md"
+    "README.md",
+    "resolution",
+    "loader"
   ],
   "exports": {
     ".": {
@@ -24,10 +26,20 @@
       "import": "./validation/index.js",
       "default": "./validation/index.js"
     },
-    "./schemas/plugin-manifest.v1.schema.json": "./schemas/plugin-manifest.v1.schema.json"
+    "./schemas/plugin-manifest.v1.schema.json": "./schemas/plugin-manifest.v1.schema.json",
+    "./resolution": {
+      "types": "./resolution/index.d.ts",
+      "import": "./resolution/index.js",
+      "default": "./resolution/index.js"
+    },
+    "./loader": {
+      "types": "./loader/index.d.ts",
+      "import": "./loader/index.js",
+      "default": "./loader/index.js"
+    }
   },
   "scripts": {
-    "test": "node scripts/check-registry.mjs"
+    "test": "node scripts/check-registry.mjs && node scripts/check-resolution.mjs"
   },
   "peerDependencies": {
     "@interactive-project/protocol": "0.1.0",

@@ -20,6 +20,8 @@ export interface Registry{
  registerRenderer(manifest:unknown,ports:RendererPorts):RegistrationResult<RendererRegistration>;
  lookupEngine(request:LookupRequest):{found:true;registration:EngineRegistration}|{found:false;code:string};
  lookupRenderer(request:LookupRequest&{host:HostKind}):{found:true;registration:RendererRegistration}|{found:false;code:string};
+ listEngines():readonly EngineRegistration[];
+ listRenderers():readonly RendererRegistration[];
  dispose():void;
 }
 export interface RegistryOptions{
