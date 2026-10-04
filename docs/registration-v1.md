@@ -14,7 +14,7 @@ Registration IDs are unique across both kinds. Duplicate IDs report registry.dup
 
 Registration returns an idempotent unregister closure capturing that record's identity. It removes future lookups only. A stale closure cannot remove a later registration reusing the same public id. Returned resolutions capture immutable manifest/ports, so already-created sessions remain owned by their original engine and continue after unregistration. Removing a renderer likewise cannot dispose a running mount; its host explicitly calls dispose. Registry disposal clears registration/index maps and rejects future registration/lookups but never disposes caller-owned sessions or renderers.
 
-Lookup requires exact contract/domain versions and, for a renderer, exact host kind. Missing engines/renderers report separate codes. Headless engine use requires no renderer registration at all. Version negotiation, lazy import caching, cancellation, required-driver availability and capability-aware selection belong to registry#2; serializable catalog export belongs to #3. A manifest advertisement alone cannot authorize host services or attest actual conformance.
+Lookup requires exact contract/domain versions and, for a renderer, exact host kind. Missing engines/renderers report separate codes. Headless engine use requires no renderer registration at all. Version negotiation, lazy import caching, cancellation, required-driver availability and capability-aware selection are in registry#2. Host-specific serializable generation catalogs and schema resolution are in the optional `@interactive-project/registry/catalog` entry. A manifest advertisement alone cannot authorize host services or attest actual conformance.
 
 ## Compatibility and verification
 

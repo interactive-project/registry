@@ -13,7 +13,8 @@
     "fixtures",
     "README.md",
     "resolution",
-    "loader"
+    "loader",
+    "catalog"
   ],
   "exports": {
     ".": {
@@ -36,10 +37,15 @@
       "types": "./loader/index.d.ts",
       "import": "./loader/index.js",
       "default": "./loader/index.js"
+    },
+    "./catalog": {
+      "types": "./catalog/index.d.ts",
+      "import": "./catalog/index.js",
+      "default": "./catalog/index.js"
     }
   },
   "scripts": {
-    "test": "node scripts/check-registry.mjs && node scripts/check-resolution.mjs"
+    "test": "node scripts/check-registry.mjs && node scripts/check-resolution.mjs && node scripts/check-catalog.mjs && node scripts/check-plugin-conformance.mjs"
   },
   "peerDependencies": {
     "@interactive-project/protocol": "0.1.0",
@@ -56,6 +62,7 @@
   },
   "devDependencies": {
     "@interactive-project/protocol": "git+https://github.com/interactive-project/protocol.git#0280e004ba863621a257b96819f34295c8db0ea7",
+    "@interactive-project/events": "git+https://github.com/interactive-project/events.git#7251000eee1ddefafb8f760aadd8e6ca7f96dfa3",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "typescript": "^5.9.3"

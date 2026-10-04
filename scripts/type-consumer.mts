@@ -16,5 +16,7 @@ registry.lookupRenderer({type:'interactive-project/quiz',protocolVersion:'1.0.0'
 
 import {resolveEngine} from '@interactive-project/registry/resolution';
 import {createPluginLoader} from '@interactive-project/registry/loader';
+import {createGenerationCatalog,getGenerationSchema} from '@interactive-project/registry/catalog';
 const resolved=resolveEngine(registry,{type:'interactive-project/quiz',protocolVersion:'1.0.0',activityVersion:{min:'0.0.1',maxExclusive:'1.0.0'},requiredCapabilities:['offline']});if(resolved.resolved){const id:string=resolved.registration.manifest.id;void id;}
 const loader=createPluginLoader([{id:'fixtures/plugin',protocolVersions:['1.0.0'],dependencies:[],load:async signal=>{const aborted:boolean=signal.aborted;return{aborted};}}]);void loader;
+const catalog=createGenerationCatalog(registry,{policy:{execution:false},allowedCapabilities:['interactive','evaluable'],availableDrivers:[]});if(catalog.valid){const key:string=catalog.cacheKey;void key;getGenerationSchema(catalog.catalog,'urn:fixture:schema',()=>({type:'object'}),{maxBytes:1024});}
